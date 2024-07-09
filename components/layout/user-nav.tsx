@@ -12,6 +12,15 @@ import {
   DropdownMenuTrigger
 } from '@/components/ui/dropdown-menu';
 import { signOut, useSession } from 'next-auth/react';
+import {
+  Database,
+  FileUp,
+  BarChart,
+  Settings,
+  Shield,
+  AlertCircle
+} from 'lucide-react';
+
 export function UserNav() {
   const { data: session } = useSession();
   if (session) {
@@ -42,18 +51,35 @@ export function UserNav() {
           <DropdownMenuSeparator />
           <DropdownMenuGroup>
             <DropdownMenuItem>
-              Profile
+              <Database className="mr-2 h-4 w-4" />
+              Data Ingestion
+              <DropdownMenuShortcut>⇧⌘I</DropdownMenuShortcut>
+            </DropdownMenuItem>
+            <DropdownMenuItem>
+              <FileUp className="mr-2 h-4 w-4" />
+              Data Transformation
+              <DropdownMenuShortcut>⇧⌘T</DropdownMenuShortcut>
+            </DropdownMenuItem>
+            <DropdownMenuItem>
+              <BarChart className="mr-2 h-4 w-4" />
+              Data Visualization
+              <DropdownMenuShortcut>⇧⌘V</DropdownMenuShortcut>
+            </DropdownMenuItem>
+            <DropdownMenuItem>
+              <Settings className="mr-2 h-4 w-4" />
+              Pipeline Management
               <DropdownMenuShortcut>⇧⌘P</DropdownMenuShortcut>
             </DropdownMenuItem>
             <DropdownMenuItem>
-              Billing
-              <DropdownMenuShortcut>⌘B</DropdownMenuShortcut>
+              <Shield className="mr-2 h-4 w-4" />
+              Data Security
+              <DropdownMenuShortcut>⇧⌘S</DropdownMenuShortcut>
             </DropdownMenuItem>
             <DropdownMenuItem>
-              Settings
-              <DropdownMenuShortcut>⌘S</DropdownMenuShortcut>
+              <AlertCircle className="mr-2 h-4 w-4" />
+              Monitoring & Alerts
+              <DropdownMenuShortcut>⇧⌘M</DropdownMenuShortcut>
             </DropdownMenuItem>
-            <DropdownMenuItem>New Team</DropdownMenuItem>
           </DropdownMenuGroup>
           <DropdownMenuSeparator />
           <DropdownMenuItem onClick={() => signOut()}>
